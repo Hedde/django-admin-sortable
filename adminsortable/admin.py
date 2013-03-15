@@ -221,6 +221,22 @@ class SortableAdmin(ModelAdmin):
             mimetype='application/json')
 
 
+class SortableInlinesAdmin(ModelAdmin):
+    """
+    Use this class to create sortable inlines while keeping the parent model unsortable.
+    Requires the inline model classes to be registered on the admin though.
+    """
+    # todo, there's better ways to achieve this
+
+    class Media:
+        js = (
+            '//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js',
+            '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js',
+            'adminsortable/js/admin.sortable.stacked.inlines.js',
+            'adminsortable/js/admin.sortable.js'
+        )
+
+
 class SortableInlineBase(InlineModelAdmin):
     def __init__(self, *args, **kwargs):
         super(SortableInlineBase, self).__init__(*args, **kwargs)

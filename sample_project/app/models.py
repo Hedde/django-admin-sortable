@@ -37,6 +37,14 @@ class Project(SimpleModel, Sortable):
     description = models.TextField()
 
 
+#a model that is not sortable but can have inlines that are.
+class Agenda(SimpleModel):
+    class Meta:
+        pass
+
+    description = models.TextField()
+
+
 #registered as a tabular inline on `Project`
 class Credit(Sortable):
     class Meta(Sortable.Meta):
